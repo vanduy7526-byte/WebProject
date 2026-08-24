@@ -1,9 +1,9 @@
-FROM tomcat:9.0-jdk11-openjdk-slim
+FROM tomcat:9.0-jdk17-temurin
 
-# Xóa trang mặc định của Tomcat
+# Xóa ứng dụng mặc định của Tomcat
 RUN rm -rf /usr/local/tomcat/webapps/*
 
-# Copy toàn bộ code web vào làm ứng dụng gốc (chạy trực tiếp ở trang chủ)
+# Copy toàn bộ code web và classes vào Tomcat
 COPY ./web /usr/local/tomcat/webapps/ROOT/
 COPY ./build/web/WEB-INF/classes /usr/local/tomcat/webapps/ROOT/WEB-INF/classes
 
